@@ -1,2 +1,3 @@
-# smart-home
-🐮Smart home voice control project based on Allzh H6 series
+# 🚀smart-home
+## 初期环境搭建
+* 如何烧入Linux系统到全志开发板【香橙派开发文档详解】
