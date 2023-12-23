@@ -35,11 +35,11 @@ int main()
     pdeviceHead = addRestaurantLightToDeviceLink(pdeviceHead);
     pdeviceHead = addLivingroomLightToDeviceLink(pdeviceHead);
  
-    while(1){
+    while (1) {
         printf("Input:\n");
         scanf("%s",name);
         tmp = findDeviceByName(name, pdeviceHead);
-        if(tmp != NULL){
+        if (tmp != NULL) {
             tmp->Init(tmp->pinNum);         //先初始化
             tmp->open(tmp->pinNum);
             sleep(4);

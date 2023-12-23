@@ -32,9 +32,9 @@ struct Devices bathroomLight = {			//定义浴室灯（对象）
  
 struct Devices* addBathroomLightToDeviceLink(struct Devices *phead)		//浴室灯（对象）加入设备链表函数
 {
-	if(phead == NULL){
+	if (phead == NULL) {
 		return &bathroomLight;
-	}else{
+	} else {
 		bathroomLight.next = phead;  //以前的头变成.next
 		phead = &bathroomLight;      //更新头
 		return phead;
