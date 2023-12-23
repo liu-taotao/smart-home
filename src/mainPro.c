@@ -42,6 +42,8 @@ int main()
         if(tmp != NULL){
             tmp->Init(tmp->pinNum);         //先初始化
             tmp->open(tmp->pinNum);
+            sleep(4);
+            tmp->close(tmp->pinNum);
         }
     }
     return 0;
