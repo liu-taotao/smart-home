@@ -5,12 +5,12 @@
  
 struct Devices* findDeviceByName(char *name, struct Devices *phead)
 {
-    struct Devices *tmp =phead;
-    if(phead == NULL){
+    struct Devices *tmp = phead;
+    if (phead == NULL) {
         return NULL;
-    }else{
-        while(tmp != NULL){
-            if(strcmp(tmp->deviceName,name)==0){
+    } else {
+        while (tmp != NULL) {
+            if (strcmp(tmp->deviceName, name)==0) {
                 return tmp;
             }
             tmp = tmp->next;
@@ -37,7 +37,7 @@ int main()
  
     while (1) {
         printf("Input:\n");
-        scanf("%s",name);
+        scanf("%s", name);
         tmp = findDeviceByName(name, pdeviceHead);
         if (tmp != NULL) {
             tmp->Init(tmp->pinNum);         //先初始化
