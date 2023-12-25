@@ -21,7 +21,8 @@
 
 ## 开发过程
 
-* 添加语音控制模块时， 需要去[语音模块官网生成SDK](http://www.smartpi.cn/#/productManage)
+* 添加语音控制模块时， 需要去[语音模块官网生成SDK](http://www.smartpi.cn/#/productManage)【其实也很简单】
+* 
 
 ## 问题
 
