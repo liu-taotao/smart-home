@@ -23,7 +23,8 @@ struct InputCommand
     int (*Init)(struct InputCommand *voice);            //“初始化”函数指针
     int (*getCommand)(struct InputCommand *voice);      //“获取指令”函数指针
  
+ 
     struct InputCommand *next;
 };
  
-struct InputCommand* addVoiceControlToInputCommandLink(struct InputCommand *phead);		//“语音控制”加入指令链表函数声明
+struct InputCommand* addSocketControlToInputCommandLink(struct InputCommand *phead);
