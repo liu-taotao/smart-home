@@ -8,7 +8,7 @@
 
 * ![image-20231222225445697](./img/连接.png)
 
-* 同时要记得一直`wiringOP`这个库，因为树莓派是专用的，其他开发板没有这个硬件信息，所以移植`wiringPi`这个库没有用。
+* 同时要记得移植wiringOP`这个库，因为树莓派是专用的，其他开发板没有这个硬件信息，所以移植`wiringPi`这个库没有用。
 
 * 编译选项
 
@@ -22,11 +22,30 @@
 ## 开发过程
 
 * 添加语音控制模块时， 需要去[语音模块官网生成SDK](http://www.smartpi.cn/#/productManage)【其实也很简单】
-* 
+
+  读取时记得是按接收数据的位置读取，如下对应的位置
+
+  ````c
+  void *voiceControlThread(void *data)			//“语音控制线程”执行函数
+  {   
+      while(1){
+          memset(voiceHandler->command,'\0',sizeof(voiceHandler->command));
+          nread = voiceHandler->getCommand(voiceHandler);
+          if(nread == 0){                                 //串口没有获取到指令
+              printf("No voiceCommand received\n");
+          }else{											//获取到指令
+              printf("Get VoiceCommand -->%d\n",voiceHandler->command[0]);  //对应的位置      
+          }
+  }
+  ````
+
+* 添加网络测试，具体功能如下:
+
+* ![socket](./img/socket.png)
 
 ## 问题
 
-* 发现一个问题，就是通过`filezilla`传输**wiringOP**库的时候会出现不能运行的问题，这可能是x86架构和arm架构下的权限问题还是什么，反转就是不能正常运行。那么通过在开发板中在`github`上克隆下来的可以正常运行。
+* 发现一个问题，就是通过`filezilla`传输**wiringOP**库的时候会出现不能运行的问题，这可能是x86架构和arm架构下的权限问题还是什么，反正就是不能正常运行。那么通过在开发板中在`github`上克隆下来的可以正常运行。
 
 ## 创新点
 
