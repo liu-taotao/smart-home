@@ -2,6 +2,7 @@
  
 int socketInit(struct InputCommand *socketMsg)
 {
+ 
     int s_fd;                                       //套接字描述符
 	struct sockaddr_in s_addr;
 	memset(&s_addr,0,sizeof(struct sockaddr_in));   //数据清空
@@ -27,7 +28,6 @@ int socketInit(struct InputCommand *socketMsg)
     socketMsg->s_fd = s_fd;						    //发送套接字描述符
     return s_fd;
 }
- 
  
 struct InputCommand socketControl = {
     .commandName = "socket",
