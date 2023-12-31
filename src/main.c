@@ -174,6 +174,7 @@ void *socketReadThread(void *data)				//“读取tcp端口指令线程”执行�
     for ( ; ; ){
         memset(socketHandler->command,'\0',sizeof(socketHandler->command));
         n_read=read(socketHandler->fd,socketHandler->command,sizeof(socketHandler->command));
+        send(socketHandler->fd, socketHandler->command, sizeof(socketHandler->command), 0);
         if(n_read == -1){
             perror("read:");
         }else{
