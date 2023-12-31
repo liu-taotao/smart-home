@@ -42,7 +42,7 @@ void Command(struct InputCommand* CmdHandler)
 {
     struct Devices *tmp =NULL;
 
-    if(CmdHandler->command[0] == 48){
+    if(CmdHandler->command[0] == 48 || CmdHandler->command[0] == 0){
         tmp = findDeviceByName("smokeAlarm",pdeviceHead);
 		if(tmp != NULL)  tmp->Init(tmp->pinNum);
 		tmp = findDeviceByName("buzzer",pdeviceHead);
@@ -54,6 +54,8 @@ void Command(struct InputCommand* CmdHandler)
 		tmp = findDeviceByName("bedroomLight",pdeviceHead);
 		if(tmp != NULL)  tmp->Init(tmp->pinNum);
 		tmp = findDeviceByName("bathroomLight",pdeviceHead);
+		if(tmp != NULL)  tmp->Init(tmp->pinNum);
+        tmp = findDeviceByName("lock",pdeviceHead);
 		if(tmp != NULL)  tmp->Init(tmp->pinNum);
         printf("设备已全部初始化\n");
 	}
@@ -112,6 +114,20 @@ void Command(struct InputCommand* CmdHandler)
             tmp->close(tmp->pinNum);
             printf("已关闭浴室灯\n");
         }
+	}
+	if(CmdHandler->command[0] == 97){
+		tmp = findDeviceByName("lock",pdeviceHead);
+		if(tmp != NULL){
+			tmp->open(tmp->pinNum);
+			printf("Open door.\n");
+		}
+	}
+	if(CmdHandler->command[0] == 98){
+		tmp = findDeviceByName("lock",pdeviceHead);
+		if(tmp != NULL){
+			tmp->close(tmp->pinNum);
+			printf("Close door.\n");
+		}
 	}
     if(CmdHandler->command[0] == 9 || CmdHandler->command[0] == 57){
 		tmp = findDeviceByName("livingroomLight",pdeviceHead);
@@ -260,7 +276,7 @@ int main()
     pdeviceHead = addLivingroomLightToDeviceLink(pdeviceHead);
     pdeviceHead = addSmokeAlarmToDeviceLink(pdeviceHead);
     pdeviceHead = addBuzzerToDeviceLink(pdeviceHead);
- 
+    pdeviceHead = addLockToDeviceLink(pdeviceHead);
     //3.线程池建立  int pthread_create(pthread_t *restrict tidp, const pthread_attr_t *restrict attr, void *(*start_rtn)(void *), void *restrict arg); 
     //3.1 语音线程
     pthread_create(&voiceControl_thread,NULL,voiceControlThread,NULL);

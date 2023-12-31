@@ -23,3 +23,4 @@ struct Devices* addRestaurantLightToDeviceLink(struct Devices *phead);		//“餐
 struct Devices* addLivingroomLightToDeviceLink(struct Devices *phead);		//“客厅灯”加入设备链表函数声明
 struct Devices* addSmokeAlarmToDeviceLink(struct Devices *phead);           //“烟雾报警器”加入设备链表函数声明
 struct Devices* addBuzzerToDeviceLink(struct Devices *phead);		        //“蜂鸣器”加入设备链表函数声明
+struct Devices* addLockToDeviceLink(struct Devices *phead);
