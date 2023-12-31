@@ -43,6 +43,9 @@
 
 * ![socket](./img/socket.png)
 
+* 三线程同时工作测试，无其他问题
+* ![线程](./img/线程.png)
+
 ## 问题
 
 * 发现一个问题，就是通过`filezilla`传输**wiringOP**库的时候会出现不能运行的问题，这可能是x86架构和arm架构下的权限问题还是什么，反正就是不能正常运行。那么通过在开发板中在`github`上克隆下来的可以正常运行。
@@ -57,5 +60,3 @@
 * ![香橙派引脚说明](./img/香橙派引脚说明.png)
 
 ## 其他的后续再补充，有用的话记得点星星~
-
-![1](https://cdn.sstatic.net/Img/product/collectives/illo-collectives-hero.png?v=9326ddc13666)
