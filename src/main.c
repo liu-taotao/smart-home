@@ -42,7 +42,7 @@ void Command(struct InputCommand* CmdHandler)
 {
     struct Devices *tmp =NULL;
 
-    if(CmdHandler->command[0] == 48){
+    if(CmdHandler->command[0] == 48 || strcmp("00",CmdHandler->command) == 0){
         tmp = findDeviceByName("smokeAlarm",pdeviceHead);
 		if(tmp != NULL)  tmp->Init(tmp->pinNum);
 		tmp = findDeviceByName("buzzer",pdeviceHead);
@@ -57,63 +57,63 @@ void Command(struct InputCommand* CmdHandler)
 		if(tmp != NULL)  tmp->Init(tmp->pinNum);
         printf("设备已全部初始化\n");
 	}
-	if(CmdHandler->command[0] == 1){
+	if(CmdHandler->command[0] == 1 || strcmp("1",CmdHandler->command) == 0){
 		tmp = findDeviceByName("livingroomLight",pdeviceHead);
         if(tmp != NULL){
             tmp->open(tmp->pinNum);
             printf("已打开客厅灯\n");
         }
 	}
-    if(CmdHandler->command[0] == 2){
+    if(CmdHandler->command[0] == 2 || strcmp("2",CmdHandler->command) == 0){
 		tmp = findDeviceByName("livingroomLight",pdeviceHead);
         if(tmp != NULL){
             tmp->close(tmp->pinNum);
             printf("已关闭客厅灯\n");
         }
 	}
-    if(CmdHandler->command[0] == 3){
+    if(CmdHandler->command[0] == 3 || strcmp("3",CmdHandler->command) == 0){
 		tmp = findDeviceByName("restaurantLight",pdeviceHead);
         if(tmp != NULL){
             tmp->open(tmp->pinNum);
             printf("已打开餐厅灯\n");
         }
 	}
-    if(CmdHandler->command[0] == 4){
+    if(CmdHandler->command[0] == 4 || strcmp("4",CmdHandler->command) == 0){
 		tmp = findDeviceByName("restaurantLight",pdeviceHead);
         if(tmp != NULL){
             tmp->close(tmp->pinNum);
             printf("已关闭餐厅灯\n");
         }
 	}
-    if(CmdHandler->command[0] == 5){
+    if(CmdHandler->command[0] == 5 || strcmp("5",CmdHandler->command) == 0){
 		tmp = findDeviceByName("bedroomLight",pdeviceHead);
         if(tmp != NULL){
             tmp->open(tmp->pinNum);
             printf("已打开卧室灯\n");
         }
 	}
-    if(CmdHandler->command[0] == 6){
+    if(CmdHandler->command[0] == 6 || strcmp("6",CmdHandler->command) == 0){
 		tmp = findDeviceByName("bedroomLight",pdeviceHead);
         if(tmp != NULL){
             tmp->close(tmp->pinNum);
             printf("已关闭卧室灯\n");
         }
 	}
-    if(CmdHandler->command[0] == 7){
+    if(CmdHandler->command[0] == 7 || strcmp("7",CmdHandler->command) == 0){
 		tmp = findDeviceByName("bathroomLight",pdeviceHead);
         if(tmp != NULL){
             tmp->open(tmp->pinNum);
             printf("已打开浴室灯\n");
         }
 	}
-    if(CmdHandler->command[0] == 8){
+    if(CmdHandler->command[0] == 8 || strcmp("8",CmdHandler->command) == 0){
 		tmp = findDeviceByName("bathroomLight",pdeviceHead);
         if(tmp != NULL){
             tmp->close(tmp->pinNum);
             printf("已关闭浴室灯\n");
         }
 	}
-    if(CmdHandler->command[0] == 9){
+    if(CmdHandler->command[0] == 9 || strcmp("9",CmdHandler->command) == 0){
 		tmp = findDeviceByName("livingroomLight",pdeviceHead);
 		if(tmp != NULL)  tmp->open(tmp->pinNum);
 		tmp = findDeviceByName("restaurantLight",pdeviceHead);
@@ -124,7 +124,7 @@ void Command(struct InputCommand* CmdHandler)
 		if(tmp != NULL)  tmp->open(tmp->pinNum);
         printf("已打开所有灯\n");
     }
-    if(CmdHandler->command[0] == 10){
+    if(CmdHandler->command[0] == 10 || strcmp("10",CmdHandler->command) == 0){
 		tmp = findDeviceByName("livingroomLight",pdeviceHead);
 		if(tmp != NULL)  tmp->close(tmp->pinNum);
 		tmp = findDeviceByName("restaurantLight",pdeviceHead);
