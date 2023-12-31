@@ -221,7 +221,6 @@ void *smokeAlarmThread(void *data)               //“烟雾报警器线程”�
     struct Devices *tmp = NULL;
     printf("smokeAlarmThread is ok\n");
     for ( ; ; ){
-        printf("smokeAlarmThread is GO\n");
         tmp = findDeviceByName("smokeAlarm", pdeviceHead);
         if(tmp != NULL){
             smokeStatus = tmp->readStatus(tmp->pinNum);
