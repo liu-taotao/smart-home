@@ -11,7 +11,7 @@ int lockInit(int pinNum)
 {
 	pinMode(pinNum,OUTPUT);					
 	digitalWrite(pinNum,HIGH);				
- system("sudo ./sg90/a.out 3");
+ 	system("sudo ./sg90/a.out 3");
 }
  
 int lockOpen(int pinNum)
@@ -35,7 +35,7 @@ struct Devices lock = {			//定义客厅灯（对象）
 	.Init = lockInit,			//指定初始化函数
 	.open = lockOpen,			//指定“打开灯”函数
 	.close = lockClose,			//指定“关闭灯”函数
-  .changeStatus = lockStatus
+  	.changeStatus = lockStatus
 };
  
 struct Devices* addLockToDeviceLink(struct Devices *phead)		//客厅灯（对象）加入设备链表函数
