@@ -176,7 +176,7 @@ void *voiceControlThread(void *data)			//“语音控制线程”执行函数
             if(nread == 0){                                 //串口没有获取到指令
                 printf("No voiceCommand received\n");
             }else{											//获取到指令
-                printf("v Get VoiceCommand -->%d\n",voiceHandler->command[0]);
+                printf("voice Get VoiceCommand -->%d\n",voiceHandler->command[0]);
                 Command(voiceHandler);
             }
         }   
@@ -194,7 +194,7 @@ void *socketReadThread(void *data)				//“读取tcp端口指令线程”执行�
         if(n_read == -1){
             perror("read:");
         }else{
-            printf("SOCKET Get SocketCommand-->%d\n",socketHandler->command[0]);
+            printf("socket Get SocketCommand-->%d\n",socketHandler->command[0]);
             Command(socketHandler);
         }
     }
@@ -226,8 +226,7 @@ void *socketControlThread(void *data)           //“网络控制线程”执行
         //4.accept
 		c_fd = accept(socketHandler->s_fd,(struct sockaddr *)&c_addr,&clen);	//接收连接请求，阻塞至有客户端完成三次握手
 		socketHandler->fd = c_fd;
-        delay(10);	
-        printf("hello\n");				                            //将套接字描述符返回给“网络控制”链表节点
+        delay(10);					                            //将套接字描述符返回给“网络控制”链表节点
 		pthread_create(&socketRead_thread,NULL,socketReadThread,NULL);			//创建新线程：用于读取TCP端口指令
     }
 }
