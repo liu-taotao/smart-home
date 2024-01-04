@@ -22,7 +22,7 @@ int socketInit(struct InputCommand *socketMsg)
 	bind(s_fd,(struct sockaddr *)&s_addr,sizeof(struct sockaddr_in));
  
     //3.listen
-	listen(s_fd,10);//监听10个连接
+	listen(s_fd,50);//监听10个连接
     printf("socket Server listening ...\n");
  
     socketMsg->s_fd = s_fd;						    //发送套接字描述符
