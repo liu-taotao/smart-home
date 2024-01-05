@@ -5,7 +5,9 @@
 struct InputCommand *pcommandHead = NULL;				              //定义指令工厂初始链表头
 struct Devices      *pdeviceHead  = NULL;				              //定义设备工厂初始链表头
 struct InputCommand *socketHandler = NULL;
- 
+
+pthread_mutex_t lock;  // 声明互斥锁
+
 struct Devices* findDeviceByName(char *name, struct Devices *phead)
 {
     struct Devices *tmp =phead;
@@ -40,6 +42,8 @@ struct InputCommand* findCommandByName(char *name, struct InputCommand *phead)
  
 void Command(struct InputCommand* CmdHandler)
 {
+    pthread_mutex_lock(&lock);  // 加锁
+
     struct Devices *tmp =NULL;
 
     if(CmdHandler->command[0] == 48 || CmdHandler->command[0] == 0){
@@ -151,6 +155,8 @@ void Command(struct InputCommand* CmdHandler)
 		if(tmp != NULL)  tmp->close(tmp->pinNum);
         printf("已关闭所有灯\n");
 	}
+
+    pthread_mutex_unlock(&lock);  // 解锁
 }
  
 void *voiceControlThread(void *data)			//“语音控制线程”执行函数
@@ -259,7 +265,8 @@ int main()
         fprintf (stdout, "Unable to start wiringPi: %s\n", strerror (errno)) ; 
         return 1 ; 
     }
-    
+    pthread_mutex_init(&lock, NULL);  // 初始化互斥锁
+
     pthread_t voiceControl_thread;
 	pthread_t socketControl_thread;
 	pthread_t smokeAlarm_thread;
@@ -288,6 +295,8 @@ int main()
     pthread_join(voiceControl_thread, NULL);		//主函数等待线程退出
 	pthread_join(socketControl_thread, NULL);		//主函数等待线程退出
 	pthread_join(smokeAlarm_thread, NULL);			//主函数等待线程退出
- 
+    
+    pthread_mutex_destroy(&lock);  // 销毁互斥锁
+
     return 0;
 }
